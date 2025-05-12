@@ -4,50 +4,50 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
-    public Animator animator;
-   
-    
+    [SerializeField] private Animator playerAnimator;
 
     private void Awake()
     {
         Debug.Log("Player Controller Awake");
     }
 
-    void Start()
-    {
-       
-    }
-
     void Update()
     {
-        // Horizontal Movement & Animation
-        float speed = Input.GetAxisRaw("Horizontal");
-        animator.SetFloat("Speed", Mathf.Abs(speed));
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        bool isCrouch = Input.GetKey(KeyCode.LeftControl);
 
-        // Jumping
-        float jump = Input.GetAxisRaw("Vertical");
-        animator.SetBool("Jump", jump > 0);
+        PlayMoveAnim(horizontal);
+        PlayJumpAnim(vertical);
+        PlayCrouchAnim(isCrouch);
+    }
 
-        // Player flipping based on direction
+    public void PlayMoveAnim(float horizontal)
+    {
+        playerAnimator.SetFloat("horizontal", Mathf.Abs(horizontal));
+
         Vector3 scale = transform.localScale;
-        if (speed < 0)
+
+        if (horizontal < 0)
         {
-            scale.x = -1f * Mathf.Abs(scale.x);
+            scale.x = -Mathf.Abs(scale.x); // Face left
         }
-        else if (speed > 0)
+        else if (horizontal > 0)
         {
-            scale.x = Mathf.Abs(scale.x);
+            scale.x = Mathf.Abs(scale.x); // Face right
         }
+
         transform.localScale = scale;
+    }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            animator.SetTrigger("Jump");
-        }
+    public void PlayJumpAnim(float vertical)
+    {
+        bool isJumping = vertical > 0.01f;
+        playerAnimator.SetBool("Jump", isJumping);
+    }
 
-        // Crouching
-        bool isCrouching = Input.GetKey(KeyCode.LeftControl);
-        animator.SetBool("isCrouching", isCrouching);
-     
+    public void PlayCrouchAnim(bool isCrouch)
+    {
+        playerAnimator.SetBool("Crouch", isCrouch);
     }
 }
