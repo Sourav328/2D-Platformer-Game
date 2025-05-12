@@ -707,7 +707,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87dbb10f68b55042a1d5370629c4b8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 1510254133}
+  animator: {fileID: 1510254133}
+  playerCollider: {fileID: 0}
+  crouchHeight: 1
 --- !u!1 &2054826372
 GameObject:
   m_ObjectHideFlags: 0
