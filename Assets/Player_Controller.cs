@@ -4,50 +4,50 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
-    [SerializeField] private Animator playerAnimator;
+    public Animator animator;
+   
+    
 
     private void Awake()
     {
         Debug.Log("Player Controller Awake");
     }
 
+    void Start()
+    {
+       
+    }
+
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        bool isCrouch = Input.GetKey(KeyCode.LeftControl);
+        // Horizontal Movement & Animation
+        float speed = Input.GetAxisRaw("Horizontal");
+        animator.SetFloat("Speed", Mathf.Abs(speed));
 
-        PlayMoveAnim(horizontal);
-        PlayJumpAnim(vertical);
-        PlayCrouchAnim(isCrouch);
-    }
+        // Jumping
+        float jump = Input.GetAxisRaw("Vertical");
+        animator.SetBool("Jump", jump > 0);
 
-    public void PlayMoveAnim(float horizontal)
-    {
-        playerAnimator.SetFloat("horizontal", Mathf.Abs(horizontal));
-
+        // Player flipping based on direction
         Vector3 scale = transform.localScale;
-
-        if (horizontal < 0)
+        if (speed < 0)
         {
-            scale.x = -Mathf.Abs(scale.x); // Face left
+            scale.x = -1f * Mathf.Abs(scale.x);
         }
-        else if (horizontal > 0)
+        else if (speed > 0)
         {
-            scale.x = Mathf.Abs(scale.x); // Face right
+            scale.x = Mathf.Abs(scale.x);
         }
-
         transform.localScale = scale;
-    }
 
-    public void PlayJumpAnim(float vertical)
-    {
-        bool isJumping = vertical > 0.01f;
-        playerAnimator.SetBool("Jump", isJumping);
-    }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetTrigger("Jump");
+        }
 
-    public void PlayCrouchAnim(bool isCrouch)
-    {
-        playerAnimator.SetBool("Crouch", isCrouch);
+        // Crouching
+        bool isCrouching = Input.GetKey(KeyCode.LeftControl);
+        animator.SetBool("isCrouching", isCrouching);
+     
     }
 }
