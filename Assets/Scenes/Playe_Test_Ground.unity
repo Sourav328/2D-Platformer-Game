@@ -708,6 +708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 1510254133}
+  boxCol: {fileID: 1510254137}
 --- !u!1 &2054826372
 GameObject:
   m_ObjectHideFlags: 0

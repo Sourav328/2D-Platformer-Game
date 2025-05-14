@@ -50,8 +50,17 @@ public class Player_Controller : MonoBehaviour
 
     public void PlayJumpAnim(float vertical)
     {
-        bool isJumping = vertical > 0.01f;
-        playerAnimator.SetBool("Jump", isJumping);
+        bool isJump = vertical > 0.001f; // Declare and assign before using
+        playerAnimator.SetBool("Jump", isJump);
+
+        if (vertical > 0.001f)
+        {
+            playerAnimator.SetBool("Jump", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("Jump", false);
+        }
     }
 
     public void PlayCrouchAnim(bool isCrouch)
