@@ -46,7 +46,12 @@ public class Player_Controller : MonoBehaviour
         
         PlayMoveAnim(horizontal, vertical);
         CracterMove(horizontal, vertical);
-
+        
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            Jump1();
+            PlayJumpAnim();
+        }
         //PlayJumpAnim(vertical);
 
         PlayCrouchAnim(isCrouch);
@@ -63,10 +68,15 @@ public class Player_Controller : MonoBehaviour
         position.x += horizontal * Speed * Time.deltaTime;
         transform.position = position;  
 
-        if (vertical > 0 && isGrounded)
-        {
-            rig2D.AddForce(new Vector2(0f, Jump),ForceMode2D.Force);
-        }
+       // if (vertical > 0 && isGrounded)
+      //{
+      //    rig2D.AddForce(new Vector2(0f, Jump),ForceMode2D.Force);
+      //}
+
+    }
+    private void Jump1()
+    {
+        rig2D.AddForce(new Vector2(0f, Jump), ForceMode2D.Force);
     }
     public void PlayMoveAnim(float horizontal, float vertical)
     {
@@ -91,20 +101,20 @@ public class Player_Controller : MonoBehaviour
 
         //move this thing into the coroutine
         //in here call the StartCoroutine(JumpCoroutine());
-        public void PlayJumpAnim(float vertical)
+        public void PlayJumpAnim()
         {
-           if (vertical > 0f && isGrounded)
-           {
-               StartCoroutine(JumpCoroutine()); 
-           }
-        }
-
+           //if (vertical > 0f && isGrounded)
+           //{
+               
+           //}
+        StartCoroutine(JumpCoroutine());
+    }
         private System.Collections.IEnumerator JumpCoroutine()
         {
             playerAnimator.SetBool("Jump", true);
-            yield return new WaitForSeconds(0.01f); 
+            yield return new WaitForSeconds(1f); 
             playerAnimator.SetBool("Jump", false);
-    }
+        }
 
     public void PlayCrouchAnim(bool isCrouch)
     {
@@ -132,7 +142,7 @@ public class Player_Controller : MonoBehaviour
         playerAnimator.SetBool("Crouch", isCrouch);
 
     }
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube((Vector2)transform.position + boxOffset, boxSize);
