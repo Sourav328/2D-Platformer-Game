@@ -10,15 +10,9 @@ public class Player_Controller : MonoBehaviour
     private Vector2 boxColInitOffset;
     [SerializeField] public float Speed;
     [SerializeField] public float Jump;
-    //grounded features
 
     private bool isGrounded = false;
     
-
-    //layer mask for the ground
-    //box offset
-    //box size  
-
     [Header("Ground Check Settings")]
     [SerializeField] private LayerMask groundLayer;
 
@@ -44,14 +38,13 @@ public class Player_Controller : MonoBehaviour
         bool isCrouch = Input.GetKey(KeyCode.LeftControl);
 
         
-        PlayMoveAnim(horizontal);
-        CracterMove(horizontal, vertical);
-        PlayJumpAnim(vertical);
 
+        PlayMoveAnim(horizontal, vertical);
+        PlayerJumpAnim();
+        CracterMove(horizontal, vertical);
         PlayCrouchAnim(isCrouch);
     }
 
-    //FixedUpdate(){isGrounded = Physics2D.OverlapBox();}
     private void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapBox((Vector2)transform.position + boxOffset, boxSize, 0f, groundLayer);
@@ -60,13 +53,14 @@ public class Player_Controller : MonoBehaviour
     {
         Vector2 position = transform.position;
         position.x += horizontal * Speed * Time.deltaTime;
-        transform.position = position;  
 
-       if (vertical > 0 && isGrounded)
-       {
-          rig2D.AddForce(new Vector2(0f, Jump),ForceMode2D.Force);
-       }
+        transform.position = position;
 
+
+        if (vertical > 0 && isGrounded)
+        {
+            Jump1();
+        }
     }
     private void Jump1()
     {
@@ -80,32 +74,29 @@ public class Player_Controller : MonoBehaviour
 
         if (horizontal < 0)
         {
-            scale.x = -Mathf.Abs(scale.x); // Face left
+            scale.x = -Mathf.Abs(scale.x); 
         }
         else if (horizontal > 0)
         {
-            scale.x = Mathf.Abs(scale.x); // Face right
+            scale.x = Mathf.Abs(scale.x); 
         }
 
         transform.localScale = scale;
     }
 
-    //move this thing into the coroutine
-    //in here call the StartCoroutine(JumpCoroutine());
-    public void PlayJumpAnim(float vertical)
+    public void PlayerJumpAnim()
     {
-        if (vertical > 0.001f && isGrounded)
+        if (!isGrounded)
         {
-            StartCoroutine(JumpCoroutine());
+            playerAnimator.SetBool("Jump", true);
         }
+        else
+        {
+            playerAnimator.SetBool("Jump", false);
+        }
+         
     }
-
-    private System.Collections.IEnumerator JumpCoroutine()
-    {
-        playerAnimator.SetBool("Jump", true);
-        yield return new WaitForSeconds(0.2f);
-        playerAnimator.SetBool("Jump", false);
-    }
+       
 
     public void PlayCrouchAnim(bool isCrouch)
     {
@@ -123,13 +114,11 @@ public class Player_Controller : MonoBehaviour
         }
         else
         {
-            //Reset collider to initial values
+            
             boxCol.size = boxColInitSize;
             boxCol.offset = boxColInitOffset;
         }
 
-       
-    
         playerAnimator.SetBool("Crouch", isCrouch);
 
     }
