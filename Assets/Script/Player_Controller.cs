@@ -39,7 +39,7 @@ public class Player_Controller : MonoBehaviour
 
         
 
-        PlayMoveAnim(horizontal, vertical);
+        PlayerMoveAnim(horizontal);
         PlayerJumpAnim();
         CracterMove(horizontal, vertical);
         PlayCrouchAnim(isCrouch);
@@ -66,7 +66,7 @@ public class Player_Controller : MonoBehaviour
     {
         rig2D.AddForce(new Vector2(0f, Jump), ForceMode2D.Force);
     }
-    public void PlayMoveAnim(float horizontal)
+    public void PlayerMoveAnim(float horizontal)
     {
         playerAnimator.SetFloat("horizontal", Mathf.Abs(horizontal));
 
