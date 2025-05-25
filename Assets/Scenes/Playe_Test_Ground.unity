@@ -1652,11 +1652,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1510254136, guid: 93fec1966e657be4ba773e49f6c553a3, type: 3}
       propertyPath: m_Mass
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1510254138, guid: 93fec1966e657be4ba773e49f6c553a3, type: 3}
       propertyPath: Jump
-      value: 60
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1510254138, guid: 93fec1966e657be4ba773e49f6c553a3, type: 3}
       propertyPath: boxSize.x
