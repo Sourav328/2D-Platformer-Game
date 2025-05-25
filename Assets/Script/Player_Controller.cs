@@ -11,7 +11,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] public float Speed;
     [SerializeField] public float Jump;
 
-    private bool isGrounded = true;
+    private bool isGrounded = false;
     
     [Header("Ground Check Settings")]
     [SerializeField] private LayerMask groundLayer;
@@ -38,6 +38,7 @@ public class Player_Controller : MonoBehaviour
         bool isCrouch = Input.GetKey(KeyCode.LeftControl);
 
         
+
         PlayMoveAnim(horizontal, vertical);
         PlayerJumpAnim();
         CracterMove(horizontal, vertical);
@@ -52,7 +53,9 @@ public class Player_Controller : MonoBehaviour
     {
         Vector2 position = transform.position;
         position.x += horizontal * Speed * Time.deltaTime;
+
         transform.position = position;
+
 
         if (vertical > 0 && isGrounded)
         {
@@ -63,11 +66,11 @@ public class Player_Controller : MonoBehaviour
     {
         rig2D.AddForce(new Vector2(0f, Jump), ForceMode2D.Force);
     }
-    public void PlayMoveAnim(float horizontal, float vertical)
+    public void PlayMoveAnim(float horizontal)
     {
         playerAnimator.SetFloat("horizontal", Mathf.Abs(horizontal));
 
-        Vector3 scale = transform.localScale;
+        Vector2 scale = transform.localScale;
 
         if (horizontal < 0)
         {
@@ -80,6 +83,7 @@ public class Player_Controller : MonoBehaviour
 
         transform.localScale = scale;
     }
+
     public void PlayerJumpAnim()
     {
         if (!isGrounded)
@@ -93,6 +97,7 @@ public class Player_Controller : MonoBehaviour
          
     }
        
+
     public void PlayCrouchAnim(bool isCrouch)
     {
         if (isCrouch == true)
