@@ -8,8 +8,8 @@ public class Player_Controller : MonoBehaviour
 
     private Vector2 boxColInitSize;
     private Vector2 boxColInitOffset;
-    [SerializeField] public float Speed;
-    [SerializeField] public float Jump;
+    [SerializeField] public float speed;
+    [SerializeField] public float jump;
 
     private bool isGrounded = false;
     
@@ -52,7 +52,7 @@ public class Player_Controller : MonoBehaviour
     public void CracterMove(float horizontal, float vertical)
     {
         Vector2 position = transform.position;
-        position.x += horizontal * Speed * Time.deltaTime;
+        position.x += horizontal * speed * Time.deltaTime;
 
         transform.position = position;
 
@@ -64,7 +64,7 @@ public class Player_Controller : MonoBehaviour
     }
     private void Jump1()
     {
-        rig2D.AddForce(new Vector2(0f, Jump), ForceMode2D.Force);
+        rig2D.AddForce(new Vector2(0f, jump), ForceMode2D.Force);
     }
     public void PlayerMoveAnim(float horizontal)
     {
