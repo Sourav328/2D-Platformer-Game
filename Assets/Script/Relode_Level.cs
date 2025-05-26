@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Level_Controller : MonoBehaviour
+public class Relode_Level : MonoBehaviour
 {
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Player_Controller>() != null)
         {
-            SceneManager.LoadScene("Level 1");
-            Debug.Log("Level Change");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
-
 }
