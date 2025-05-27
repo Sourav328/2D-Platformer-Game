@@ -10,10 +10,8 @@ public class Trigger_Next_Level : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Player_Controller>() != null)
         {
-            SceneManager.LoadScene("Level 1");
-            
+           SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
    
-
 }

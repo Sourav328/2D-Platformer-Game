@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
@@ -6,6 +7,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] private BoxCollider2D boxCol;
     [SerializeField] private Rigidbody2D rig2D;
 
+    [SerializeField] public Score_Controller scoreController;
     private Vector2 boxColInitSize;
     private Vector2 boxColInitOffset;
     [SerializeField] public float speed;
@@ -19,7 +21,11 @@ public class Player_Controller : MonoBehaviour
     [Header("Scale The Ground Collider")]
     [SerializeField] private Vector2 boxSize = new Vector2(0.6f, 0.1f);
     [SerializeField] private Vector2 boxOffset = new Vector2(0f, -1.1f);
-    
+    public void PickUpKey()
+    {
+        scoreController.UpdateScore(10);
+        Debug.Log("Player Picked up the Key");
+    }
     private void Start()
     {
         boxColInitSize = boxCol.size;
@@ -127,5 +133,6 @@ public class Player_Controller : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube((Vector2)transform.position + boxOffset, boxSize);
     }
+
     
 }
