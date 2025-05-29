@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
@@ -14,18 +15,14 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] public float jump;
 
     private bool isGrounded = false;
-    
+
     [Header("Ground Check Settings")]
     [SerializeField] private LayerMask groundLayer;
 
     [Header("Scale The Ground Collider")]
     [SerializeField] private Vector2 boxSize = new Vector2(0.6f, 0.1f);
     [SerializeField] private Vector2 boxOffset = new Vector2(0f, -1.1f);
-    public void PickUpKey()
-    {
-        scoreController.UpdateScore(10);
-        Debug.Log("Player Picked up the Key");
-    }
+
     private void Start()
     {
         boxColInitSize = boxCol.size;
@@ -34,7 +31,7 @@ public class Player_Controller : MonoBehaviour
     private void Awake()
     {
         Debug.Log("Player Controller Awake");
-        
+
     }
 
     void Update()
@@ -43,7 +40,7 @@ public class Player_Controller : MonoBehaviour
         float vertical = Input.GetAxisRaw("Jump");
         bool isCrouch = Input.GetKey(KeyCode.LeftControl);
 
-        
+
 
         PlayerMoveAnim(horizontal);
         PlayerJumpAnim();
@@ -80,11 +77,11 @@ public class Player_Controller : MonoBehaviour
 
         if (horizontal < 0)
         {
-            scale.x = -Mathf.Abs(scale.x); 
+            scale.x = -Mathf.Abs(scale.x);
         }
         else if (horizontal > 0)
         {
-            scale.x = Mathf.Abs(scale.x); 
+            scale.x = Mathf.Abs(scale.x);
         }
 
         transform.localScale = scale;
@@ -100,9 +97,8 @@ public class Player_Controller : MonoBehaviour
         {
             playerAnimator.SetBool("Jump", false);
         }
-         
+
     }
-       
 
     public void PlayCrouchAnim(bool isCrouch)
     {
@@ -120,7 +116,7 @@ public class Player_Controller : MonoBehaviour
         }
         else
         {
-            
+
             boxCol.size = boxColInitSize;
             boxCol.offset = boxColInitOffset;
         }
@@ -133,6 +129,24 @@ public class Player_Controller : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube((Vector2)transform.position + boxOffset, boxSize);
     }
+    public void PickUpKey()
+    {
+        scoreController.UpdateScore(10);
 
-    
+    }
+    public void Kill_Player()
+    {
+        
+        Destroy(gameObject);
+        RelodeLevel();
+    }
+
+    private void RelodeLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
+        
+    }
+
+
 }
