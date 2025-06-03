@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,10 +7,8 @@ public class Relode_Level : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Player_Controller>() != null)
         {
-            
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(currentSceneIndex);
-
         }
     }
 }

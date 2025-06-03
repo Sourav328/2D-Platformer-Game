@@ -50,9 +50,14 @@ public class Enemy_Controller : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Player_Controller playerController))
+        PlayerHealthSystem playerHealth = collision.GetComponent<PlayerHealthSystem>();
+
+        if (playerHealth != null)
         {
-            playerController.Kill_Player();
+            playerHealth.TakeDamage(1);
+            Debug.Log("Player Got hit");
         }
     }
+
+
 }

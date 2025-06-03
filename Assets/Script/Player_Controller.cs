@@ -1,6 +1,7 @@
 using System;
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Player_Controller : MonoBehaviour
 {
@@ -134,19 +135,5 @@ public class Player_Controller : MonoBehaviour
         scoreController.UpdateScore(10);
 
     }
-    public void Kill_Player()
-    {
-        
-        Destroy(gameObject);
-        RelodeLevel();
-    }
-
-    private void RelodeLevel()
-    {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);
-        
-    }
-
-
+    
 }
