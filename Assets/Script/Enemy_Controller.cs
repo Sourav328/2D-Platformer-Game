@@ -49,14 +49,18 @@ public class Enemy_Controller : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        PlayerHealthSystem playerHealth = collision.GetComponent<PlayerHealthSystem>();
-
-        if (playerHealth != null)
+    {   if (collision.gameObject.CompareTag("Player"))
         {
-            playerHealth.TakeDamage(1);
-            Debug.Log("Player Got hit");
+            PlayerHealthSystem playerHealth = collision.GetComponent<PlayerHealthSystem>();
+
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(1);
+                Debug.Log("Player Got hit");
+            }
         }
+       
+       
     }
 
 
