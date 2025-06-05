@@ -12,6 +12,12 @@ public class PlayerHealthSystem : MonoBehaviour
     [Header("UI Components")]
     [SerializeField] private GameObject[] hearts;
 
+    [Header("Game Over UI")]
+    [SerializeField] private GameObject gameOverPanel;
+
+    [Header("Components")]
+    [SerializeField] private Player_Controller playerController;
+
     private void Awake()
     {
         currentHealth = startingHealth;
@@ -39,14 +45,26 @@ public class PlayerHealthSystem : MonoBehaviour
 
     private void Die()
     {
-        StartCoroutine(DieDelay());
+        StartCoroutine(ShowGameOver());
     }
-    private IEnumerator DieDelay()
+    private IEnumerator ShowGameOver()
     {
-       
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        yield return new WaitForSeconds(0.5f);
+
+        if (playerController != null)
+        {
+            playerController.enabled = false; 
+        }
+
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(true); 
+        }
+        else
+        {
+            Debug.LogWarning("GameOverPanel is not assigned in PlayerHealthSystem!");
+        }
+
+
     }
-        
-        
 }

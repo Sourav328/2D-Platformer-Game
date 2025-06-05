@@ -63,13 +63,13 @@ public class Player_Controller : MonoBehaviour
 
         if (vertical > 0 && isGrounded)
         {
-            Jump1();
+            rig2D.velocity = new Vector2(rig2D.velocity.x, 0f); 
+            rig2D.AddForce(new Vector2(0f, jump), ForceMode2D.Impulse);
         }
+
+       
     }
-    private void Jump1()
-    {
-        rig2D.AddForce(new Vector2(0f, jump), ForceMode2D.Force);
-    }
+
     public void PlayerMoveAnim(float horizontal)
     {
         playerAnimator.SetFloat("horizontal", Mathf.Abs(horizontal));
