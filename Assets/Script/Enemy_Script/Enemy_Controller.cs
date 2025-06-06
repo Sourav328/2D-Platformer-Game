@@ -34,7 +34,7 @@ public class Enemy_Controller : MonoBehaviour
         float direction = targetPoint.x - transform.position.x;
         transform.localScale = new Vector3(Mathf.Sign(direction) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
 
-        enemyAnim.PlayWalkAnimation(true); // Move animation call here
+        enemyAnim.PlayWalkAnimation(true); 
 
         if (transform.position == targetPoint)
         {
