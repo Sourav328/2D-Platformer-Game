@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_Controller : MonoBehaviour
@@ -9,8 +7,9 @@ public class Enemy_Controller : MonoBehaviour
     [SerializeField] private Vector3 targetPoint;
     [SerializeField] private Vector3 pointB;
     [SerializeField] private Vector3 pointA;
+
     [Header("Components")]
-    [SerializeField] private Animator enemyAnimator;
+    [SerializeField] private Enemy_Anim enemyAnim;
 
     private void Start()
     {
@@ -21,6 +20,7 @@ public class Enemy_Controller : MonoBehaviour
     {
         PatrolBetweenPoint();
     }
+
     private void SetPatrolPoints()
     {
         transform.position = pointA;
@@ -28,19 +28,13 @@ public class Enemy_Controller : MonoBehaviour
     }
 
     private void PatrolBetweenPoint()
-    
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPoint, patrolSpeed * Time.deltaTime);
 
-        
         float direction = targetPoint.x - transform.position.x;
-        transform.localScale = new Vector3(Mathf.Sign(direction) * Mathf.Abs
-       (transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(Mathf.Sign(direction) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
 
-        if (enemyAnimator != null)
-        {
-            enemyAnimator.SetBool("isWalking", true);
-        }
+        enemyAnim.PlayWalkAnimation(true); // Move animation call here
 
         if (transform.position == targetPoint)
         {
@@ -49,19 +43,15 @@ public class Enemy_Controller : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {   if (collision.gameObject.CompareTag("Player"))
+    {
+        if (collision.CompareTag("Player"))
         {
             PlayerHealthSystem playerHealth = collision.GetComponent<PlayerHealthSystem>();
-
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(1);
                 Debug.Log("Player Got hit");
             }
         }
-       
-       
     }
-
-
 }

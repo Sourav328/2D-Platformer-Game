@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Plartform
   - Enemy
+  - Spike
   layers:
   - Default
   - TransparentFX
