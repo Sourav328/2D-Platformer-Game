@@ -23,7 +23,6 @@ public class PlayerHealthSystem : MonoBehaviour
         currentHealth = startingHealth;
         UpdateHearts();
     }
-
     public void TakeDamage(int damage)
     {
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
@@ -31,10 +30,9 @@ public class PlayerHealthSystem : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            PlayerKilled();
         }
     }
-
     private void UpdateHearts()
     {
         for (int i = 0; i < hearts.Length; i++)
@@ -42,29 +40,35 @@ public class PlayerHealthSystem : MonoBehaviour
             hearts[i].SetActive(i < currentHealth);
         }
     }
-
-    private void Die()
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Spike"))
+        {
+            currentHealth = 0;
+            UpdateHearts();
+            PlayerKilled();
+        }
+    }
+    private void PlayerKilled()
     {
         StartCoroutine(ShowGameOver());
     }
     private IEnumerator ShowGameOver()
     {
-        yield return new WaitForSeconds(0.5f);
-
         if (playerController != null)
         {
-            playerController.enabled = false; 
+            Rigidbody2D rb = playerController.GetRigBody();
+            if (rb != null)
+            {
+                rb.simulated = false;
+            }
+            playerController.enabled = false;
         }
-
+        yield return new WaitForSeconds(0f);
         if (gameOverPanel != null)
         {
-            gameOverPanel.SetActive(true); 
+            gameOverPanel.SetActive(true);
         }
-        else
-        {
-            Debug.LogWarning("GameOverPanel is not assigned in PlayerHealthSystem!");
-        }
-
 
     }
 }

@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 7073604862220915542}
   m_Layer: 0
   m_Name: ReLode_Same_Level
-  m_TagString: Untagged
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -188,7 +188,7 @@ PrefabInstance:
     - target: {fileID: 2179170948858953889, guid: a5c91b3bb798ef247baa5ec16de6231b,
         type: 3}
       propertyPath: m_Name
-      value: PickUp_Key (1)
+      value: PickUp_Key 2
       objectReference: {fileID: 0}
     - target: {fileID: 2179170948858953901, guid: a5c91b3bb798ef247baa5ec16de6231b,
         type: 3}
