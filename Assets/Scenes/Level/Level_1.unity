@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 1001804064}
   - component: {fileID: 1001804063}
   - component: {fileID: 1001804062}
+  - component: {fileID: 1001804067}
   m_Layer: 8
   m_Name: Enemies2
   m_TagString: Enemy
@@ -295,7 +296,7 @@ MonoBehaviour:
   targetPoint: {x: 12.88, y: 0.55, z: 0}
   pointB: {x: 18.09, y: 0.55, z: 0}
   pointA: {x: 12.88, y: 0.55, z: 0}
-  enemyAnimator: {fileID: 1001804064}
+  enemyAnim: {fileID: 1001804067}
 --- !u!61 &1001804063
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -410,6 +411,19 @@ Transform:
   m_Father: {fileID: 2024405324}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1001804067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001804061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa182fe9862d7b14bb9c748ce072a3a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAnimator: {fileID: 1001804064}
 --- !u!1 &1311775084 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 913278458687024709, guid: 26251445c0fdee44ca3ba56fd6024a2a,
@@ -1115,6 +1129,7 @@ GameObject:
   - component: {fileID: 2089350875}
   - component: {fileID: 2089350874}
   - component: {fileID: 2089350878}
+  - component: {fileID: 2089350879}
   m_Layer: 8
   m_Name: Enemies
   m_TagString: Enemy
@@ -1252,6 +1267,19 @@ MonoBehaviour:
   targetPoint: {x: 18.09, y: 0.55, z: 0}
   pointB: {x: 12.88, y: 0.55, z: 0}
   pointA: {x: 18.09, y: 0.55, z: 0}
+  enemyAnim: {fileID: 2089350879}
+--- !u!114 &2089350879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089350873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa182fe9862d7b14bb9c748ce072a3a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 2089350875}
 --- !u!1001 &836716223827497312
 PrefabInstance:
@@ -1477,11 +1505,6 @@ PrefabInstance:
       propertyPath: gameOverPanel
       value: 
       objectReference: {fileID: 1625629358}
-    - target: {fileID: 7073604862220915563, guid: d11d255555ede0a43a3a51b53f705512,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7073604864186533434, guid: d11d255555ede0a43a3a51b53f705512,
         type: 3}
       propertyPath: m_RootOrder

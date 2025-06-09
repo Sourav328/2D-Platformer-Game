@@ -8,6 +8,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private BoxCollider2D boxCol;
     [SerializeField] private Rigidbody2D rig2D;
+   
 
     [SerializeField] public Score_Controller scoreController;
     private Vector2 boxColInitSize;
@@ -23,7 +24,7 @@ public class Player_Controller : MonoBehaviour
     [Header("Scale The Ground Collider")]
     [SerializeField] private Vector2 boxSize = new Vector2(0.6f, 0.1f);
     [SerializeField] private Vector2 boxOffset = new Vector2(0f, -1.1f);
-
+    
     private void Start()
     {
         boxColInitSize = boxCol.size;
@@ -60,16 +61,12 @@ public class Player_Controller : MonoBehaviour
 
         transform.position = position;
 
-
         if (vertical > 0 && isGrounded)
         {
             rig2D.velocity = new Vector2(rig2D.velocity.x, 0f); 
             rig2D.AddForce(new Vector2(0f, jump), ForceMode2D.Impulse);
         }
-
-       
     }
-
     public void PlayerMoveAnim(float horizontal)
     {
         playerAnimator.SetFloat("horizontal", Mathf.Abs(horizontal));
@@ -135,5 +132,6 @@ public class Player_Controller : MonoBehaviour
         scoreController.UpdateScore(10);
 
     }
-    
+    public Rigidbody2D GetRigBody() { return rig2D; }
+
 }
