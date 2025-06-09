@@ -67,6 +67,7 @@ public class PlayerHealthSystem : MonoBehaviour
         yield return new WaitForSeconds(0f);
         if (gameOverPanel != null)
         {
+           
             gameOverPanel.SetActive(true);
         }
 

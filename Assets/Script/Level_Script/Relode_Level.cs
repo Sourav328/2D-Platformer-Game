@@ -6,7 +6,7 @@ public class Relode_Level : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (gameOverPanel != null)
+       if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(true); 
         }
@@ -16,3 +16,4 @@ public class Relode_Level : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
+ 
