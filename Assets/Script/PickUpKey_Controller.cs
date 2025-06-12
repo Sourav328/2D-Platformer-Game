@@ -11,6 +11,7 @@ public class PickUpKey_Controller : MonoBehaviour
         {
             Player_Controller playerController = collision.gameObject.GetComponent<Player_Controller>();
             playerController.PickUpKey();
+            Sound_Manager.Instance.Play(Sound.PickUp);
             Destroy(gameObject);
         }
     }   
