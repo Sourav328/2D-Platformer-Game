@@ -31,13 +31,16 @@ public class PlayerHealthSystem : MonoBehaviour
         if (currentHealth <= 0)
         {
             PlayerKilled();
+            
         }
     }
     private void UpdateHearts()
     {
         for (int i = 0; i < hearts.Length; i++)
         {
+            
             hearts[i].SetActive(i < currentHealth);
+            
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -67,8 +70,8 @@ public class PlayerHealthSystem : MonoBehaviour
         yield return new WaitForSeconds(0f);
         if (gameOverPanel != null)
         {
-           
             gameOverPanel.SetActive(true);
+            Sound_Manager.Instance.Play(Sound.PlayerDeath);
         }
 
     }

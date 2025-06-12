@@ -11,6 +11,7 @@ public class Lobby_Controller : MonoBehaviour
     private void Awake()
     {
         playButton.onClick.AddListener(ShowLevels);
+
         exitButton.onClick.AddListener(ExitGame);
     }
 
@@ -20,6 +21,7 @@ public class Lobby_Controller : MonoBehaviour
             levelPanel.SetActive(true);
 
         playButton.gameObject.SetActive(false);
+        Sound_Manager.Instance.Play(Sound.ButtonClick);
         exitButton.gameObject.SetActive(false);
     }
 

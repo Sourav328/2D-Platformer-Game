@@ -12,7 +12,7 @@ public class LevelEndTrigger : MonoBehaviour
         {
             if (levelCompletePanel != null)
                 levelCompletePanel.SetActive(true);
-
+            Sound_Manager.Instance.Play(Sound.ButtonClick);
             Debug.Log("Level Complite");
           
         }
@@ -20,6 +20,7 @@ public class LevelEndTrigger : MonoBehaviour
     public void LoadNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Sound_Manager.Instance.Play(Sound.ButtonClick);
     }
 
 
