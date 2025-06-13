@@ -13,7 +13,7 @@ public class LevelEndTrigger : MonoBehaviour
             if (levelCompletePanel != null)
                 levelCompletePanel.SetActive(true);
             Sound_Manager.Instance.Play(Sound.ButtonClick);
-            Debug.Log("Level Complite");
+            
           
         }
     }

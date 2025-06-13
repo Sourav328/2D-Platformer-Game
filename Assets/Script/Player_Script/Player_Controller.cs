@@ -15,6 +15,9 @@ public class Player_Controller : MonoBehaviour
     private Vector2 boxColInitOffset;
     [SerializeField] public float speed;
     [SerializeField] public float jump;
+    private bool canDoubleJump = false;
+    private bool hasDoubleJumpPower = false; 
+
 
     private bool isGrounded = false;
 
@@ -61,12 +64,23 @@ public class Player_Controller : MonoBehaviour
 
         transform.position = position;
 
-        if (vertical > 0 && isGrounded)
+        if (vertical > 0)
         {
-            rig2D.velocity = new Vector2(rig2D.velocity.x, 0f); 
-            rig2D.AddForce(new Vector2(0f, jump), ForceMode2D.Impulse);
+            if (isGrounded)
+            {
+                rig2D.velocity = new Vector2(rig2D.velocity.x, 0f);
+                rig2D.AddForce(new Vector2(0f, jump), ForceMode2D.Impulse);
+                canDoubleJump = true;
+            }
+            else if (hasDoubleJumpPower && canDoubleJump)
+            {
+                rig2D.velocity = new Vector2(rig2D.velocity.x, 0f);
+                rig2D.AddForce(new Vector2(0f, jump), ForceMode2D.Impulse);
+                canDoubleJump = false;
+            }
         }
     }
+    
     public void PlayerMoveAnim(float horizontal)
     {
         playerAnimator.SetFloat("horizontal", Mathf.Abs(horizontal));
@@ -131,6 +145,11 @@ public class Player_Controller : MonoBehaviour
     {
         scoreController.UpdateScore(10);
 
+    }
+    public void EnableDoubleJump()
+    {
+        hasDoubleJumpPower = true;
+        Debug.Log("Double Jump Flag Enabled");
     }
     public Rigidbody2D GetRigBody() { return rig2D; }
 

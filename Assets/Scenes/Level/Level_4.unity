@@ -207,6 +207,11 @@ PrefabInstance:
       propertyPath: gameOverPanel
       value: 
       objectReference: {fileID: 2044838970}
+    - target: {fileID: 7073604863043470713, guid: d11d255555ede0a43a3a51b53f705512,
+        type: 3}
+      propertyPath: levelCompletePanel
+      value: 
+      objectReference: {fileID: 2044838971}
     - target: {fileID: 7073604864186533434, guid: d11d255555ede0a43a3a51b53f705512,
         type: 3}
       propertyPath: m_RootOrder
@@ -269,6 +274,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d11d255555ede0a43a3a51b53f705512, type: 3}
+--- !u!114 &559919410 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7073604863043470713, guid: d11d255555ede0a43a3a51b53f705512,
+    type: 3}
+  m_PrefabInstance: {fileID: 559919409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d050db2a0bf78047ab441c061b01348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &775123874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -276,6 +293,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 479232427, guid: 93fec1966e657be4ba773e49f6c553a3, type: 3}
+      propertyPath: gameOverPanel
+      value: 
+      objectReference: {fileID: 2044838970}
     - target: {fileID: 479232427, guid: 93fec1966e657be4ba773e49f6c553a3, type: 3}
       propertyPath: hearts.Array.data[0]
       value: 
@@ -723,6 +744,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 644410522, guid: 26251445c0fdee44ca3ba56fd6024a2a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 559919410}
+    - target: {fileID: 644410522, guid: 26251445c0fdee44ca3ba56fd6024a2a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadNextLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 1625629360, guid: 26251445c0fdee44ca3ba56fd6024a2a, type: 3}
       propertyPath: relodeLevel
       value: 
@@ -929,6 +958,12 @@ GameObject:
 --- !u!1 &2044838970 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1625629358, guid: 26251445c0fdee44ca3ba56fd6024a2a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2044838966}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2044838971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1681516737, guid: 26251445c0fdee44ca3ba56fd6024a2a,
     type: 3}
   m_PrefabInstance: {fileID: 2044838966}
   m_PrefabAsset: {fileID: 0}

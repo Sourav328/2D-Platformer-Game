@@ -801,7 +801,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0651b56880a11ef45909b779443691aa, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1073,16 +1073,14 @@ MonoBehaviour:
   soundTypes:
   - soundType: 0
     soundClip: {fileID: 8300000, guid: a4dc23583fb1dc84a89049f88b06efe8, type: 3}
-  - soundType: 1
-    soundClip: {fileID: 8300000, guid: 13de3c8b19190eb488622c2982f7e977, type: 3}
   - soundType: 4
     soundClip: {fileID: 8300000, guid: 707ed9e4e72dc5f4da4f6d6e67e3bb7d, type: 3}
   - soundType: 2
     soundClip: {fileID: 8300000, guid: 151cb0c18bcdc6040aa921203a4ca7a5, type: 3}
-  - soundType: 5
-    soundClip: {fileID: 8300000, guid: e5cb0976ee7cf93489107ede5175519b, type: 3}
+  - soundType: 3
+    soundClip: {fileID: 8300000, guid: d76c71e98617e1c41a5cdc490eb1bee1, type: 3}
   - soundType: 6
-    soundClip: {fileID: 8300000, guid: ea217dc637f73b649a2866febb99c4a2, type: 3}
+    soundClip: {fileID: 8300000, guid: 31b2284e8ab3f244182080ca7da474b7, type: 3}
   soundEffect: {fileID: 2115204857}
   soundMusic: {fileID: 764823437}
 --- !u!82 &851250339
