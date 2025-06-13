@@ -50,7 +50,7 @@ public class Enemy_Controller : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(1);
-                Sound_Manager.Instance.Play(Sound.PlayerDeath);
+                Sound_Manager.Instance.Play(Sound.Hit);
                 Debug.Log("Player Got hit");
             }
         }
