@@ -10,7 +10,7 @@ public class DoubleJumpPower : MonoBehaviour
 
         if (player != null)
         {
-            player.EnableDoubleJump();
+            //player.EnableDoubleJump();
             Destroy(gameObject); 
             Debug.Log("Double Jump Enabled!");
         }
