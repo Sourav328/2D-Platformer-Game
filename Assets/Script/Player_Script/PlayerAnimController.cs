@@ -13,6 +13,8 @@ public class PlayerAnimController : MonoBehaviour
         boxColInitSize = boxCol.size;
         boxColInitOffset = boxCol.offset;
     }
+  
+   
 
     public void PlayMoveAnim(float horizontal, Transform playerTransform)
     {
