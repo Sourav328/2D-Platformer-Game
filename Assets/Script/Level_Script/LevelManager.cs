@@ -22,9 +22,9 @@ public class LevelManager : MonoBehaviour
     }
     private void Start()
     {
-        if (GetLevelStatus("Level1") == LevelStatus.Locked)
+        if (GetLevelStatus("Level_1") == LevelStatus.Locked)
         {
-            SetLevelStatus("Level1", LevelStatus.Unlocked);
+            SetLevelStatus("Level_1", LevelStatus.Unlocked);
         }
     }
     public void MarkCurrentLevelComplete()
